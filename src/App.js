@@ -40,7 +40,10 @@ function App() {
     let newItemArr = contact.filter((i) => i.id !== item.id);
     setContact(newItemArr);
   };
-
+  const editListItem = (item) => {
+     let editList = contact.filter((i) => i.id !== item.id);
+     
+  }
   return (
     <>
       <div className="main_container">
@@ -50,7 +53,7 @@ function App() {
             type="text"
             name="Name"
             required="required"
-            placeholder="Enter Serail No.."
+            placeholder="Enter Serial No.."
             value={addFormData.Name}
             onChange={handleAddFormChange}
           />
@@ -81,6 +84,7 @@ function App() {
               <th>Name</th>
               <th>Title</th>
               <th>Author</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -90,16 +94,16 @@ function App() {
                   <td>{contact.Name} </td>
                   <td>{contact.Title}</td>
                   <td>
-                    {contact.Author} <button>Edit</button>
+                    {contact.Author}
                   </td>
-                  <td onClick={() => deleteListItem(contact)}>
-                    <button>Delete</button>
+                  <td >
+                    <button onClick={() => deleteListItem(contact)} > Delete </button>
+                    <button onClick={() => editListItem(contact)} > Edit </button>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
-        {/* <h2>Add New Item</h2> */}
       </div>
     </>
   );
